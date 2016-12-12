@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F1AE34BD1DF8963E00722370 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AE34BC1DF8963E00722370 /* AppDelegate.swift */; };
-		F1AE34BF1DF8963E00722370 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AE34BE1DF8963E00722370 /* ViewController.swift */; };
+		F1AE34BF1DF8963E00722370 /* OptionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AE34BE1DF8963E00722370 /* OptionController.swift */; };
 		F1AE34C21DF8963E00722370 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1AE34C01DF8963E00722370 /* Main.storyboard */; };
 		F1AE34C51DF8963E00722370 /* MiniMusicBox.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F1AE34C31DF8963E00722370 /* MiniMusicBox.xcdatamodeld */; };
 		F1AE34C71DF8963E00722370 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1AE34C61DF8963E00722370 /* Assets.xcassets */; };
@@ -20,12 +20,14 @@
 		F1AE34DA1DF89AC600722370 /* MetronomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AE34D91DF89AC600722370 /* MetronomeViewController.swift */; };
 		F1AE34DC1DF89AD000722370 /* MetronomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AE34DB1DF89AD000722370 /* MetronomeModel.swift */; };
 		F1AE34DE1DF89B2600722370 /* Piano Sounds in Resources */ = {isa = PBXBuildFile; fileRef = F1AE34DD1DF89B2600722370 /* Piano Sounds */; };
+		F1AE34E31DFDFE6E00722370 /* Guitar Sounds in Resources */ = {isa = PBXBuildFile; fileRef = F1AE34E21DFDFE6E00722370 /* Guitar Sounds */; };
+		F1AE34E51DFE751B00722370 /* Metronome Sounds in Resources */ = {isa = PBXBuildFile; fileRef = F1AE34E41DFE751B00722370 /* Metronome Sounds */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F1AE34B91DF8963E00722370 /* MiniMusicBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniMusicBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1AE34BC1DF8963E00722370 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F1AE34BE1DF8963E00722370 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F1AE34BE1DF8963E00722370 /* OptionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionController.swift; sourceTree = "<group>"; };
 		F1AE34C11DF8963E00722370 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F1AE34C41DF8963E00722370 /* MiniMusicBox.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MiniMusicBox.xcdatamodel; sourceTree = "<group>"; };
 		F1AE34C61DF8963E00722370 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -38,6 +40,8 @@
 		F1AE34D91DF89AC600722370 /* MetronomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetronomeViewController.swift; sourceTree = "<group>"; };
 		F1AE34DB1DF89AD000722370 /* MetronomeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetronomeModel.swift; sourceTree = "<group>"; };
 		F1AE34DD1DF89B2600722370 /* Piano Sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Piano Sounds"; sourceTree = "<group>"; };
+		F1AE34E21DFDFE6E00722370 /* Guitar Sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Guitar Sounds"; sourceTree = "<group>"; };
+		F1AE34E41DFE751B00722370 /* Metronome Sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Metronome Sounds"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,7 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				F1AE34BC1DF8963E00722370 /* AppDelegate.swift */,
-				F1AE34BE1DF8963E00722370 /* ViewController.swift */,
+				F1AE34BE1DF8963E00722370 /* OptionController.swift */,
 				F1AE34D11DF89A7B00722370 /* KeyboardViewController.swift */,
 				F1AE34D31DF89A8800722370 /* KeyboardModel.swift */,
 				F1AE34D51DF89A9B00722370 /* GuitarTunerViewController.swift */,
@@ -79,9 +83,6 @@
 				F1AE34D91DF89AC600722370 /* MetronomeViewController.swift */,
 				F1AE34DB1DF89AD000722370 /* MetronomeModel.swift */,
 				F1AE34C01DF8963E00722370 /* Main.storyboard */,
-				F1AE34C61DF8963E00722370 /* Assets.xcassets */,
-				F1AE34C81DF8963E00722370 /* LaunchScreen.storyboard */,
-				F1AE34CB1DF8963E00722370 /* Info.plist */,
 				F1AE34C31DF8963E00722370 /* MiniMusicBox.xcdatamodeld */,
 				F1AE34DF1DF8B58300722370 /* Supporting Files */,
 			);
@@ -91,6 +92,11 @@
 		F1AE34DF1DF8B58300722370 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F1AE34C61DF8963E00722370 /* Assets.xcassets */,
+				F1AE34C81DF8963E00722370 /* LaunchScreen.storyboard */,
+				F1AE34CB1DF8963E00722370 /* Info.plist */,
+				F1AE34E41DFE751B00722370 /* Metronome Sounds */,
+				F1AE34E21DFDFE6E00722370 /* Guitar Sounds */,
 				F1AE34DD1DF89B2600722370 /* Piano Sounds */,
 			);
 			name = "Supporting Files";
@@ -156,7 +162,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1AE34CA1DF8963E00722370 /* LaunchScreen.storyboard in Resources */,
+				F1AE34E31DFDFE6E00722370 /* Guitar Sounds in Resources */,
 				F1AE34C71DF8963E00722370 /* Assets.xcassets in Resources */,
+				F1AE34E51DFE751B00722370 /* Metronome Sounds in Resources */,
 				F1AE34C21DF8963E00722370 /* Main.storyboard in Resources */,
 				F1AE34DE1DF89B2600722370 /* Piano Sounds in Resources */,
 			);
@@ -170,7 +178,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1AE34D41DF89A8800722370 /* KeyboardModel.swift in Sources */,
-				F1AE34BF1DF8963E00722370 /* ViewController.swift in Sources */,
+				F1AE34BF1DF8963E00722370 /* OptionController.swift in Sources */,
 				F1AE34D81DF89AA900722370 /* GuitarTunerModel.swift in Sources */,
 				F1AE34BD1DF8963E00722370 /* AppDelegate.swift in Sources */,
 				F1AE34DC1DF89AD000722370 /* MetronomeModel.swift in Sources */,
@@ -301,6 +309,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = MiniMusicBox/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.umsl.MiniMusicBox;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -314,6 +323,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = MiniMusicBox/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.umsl.MiniMusicBox;
 				PRODUCT_NAME = "$(TARGET_NAME)";

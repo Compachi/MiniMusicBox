@@ -5,192 +5,162 @@
 //  Created by Kyle Lessnau on 12/7/16.
 //  Copyright © 2016 Kyle Lessnau. All rights reserved.
 //
+//  The day is the 12th of December in the year 2016. Current Time: 3:04 AM.
+//  Today is the day I have come to understand why others before me have said
+//  that "constraints are a bitch".
 
 import UIKit
-import AVFoundation
 
 class KeyboardViewController: UIViewController {
     let keyboardModel = KeyboardModel();
-    var audioPlayer = AVAudioPlayer()
+    @IBOutlet var pianoKeyOutletCollection: [UIButton]!
+    @IBOutlet weak var octaveLabelOutlet: UILabel!
+    @IBOutlet weak var octaveUpOutlet: UIButton!
+    @IBOutlet weak var octaveDownOutlet: UIButton!
 
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        formatKeyboardButtonsAndLabels()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func cPressed(_ sender: AnyObject) {
-        let pianoNote = Bundle.main.path(forResource: "40", ofType: "wav", inDirectory: "Piano Sounds")
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: pianoNote!))
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
-            try AVAudioSession.sharedInstance().setActive(true)
+    //Borders and rounded corners for piano keys. Rotates octave buttons and octave label as well
+    func formatKeyboardButtonsAndLabels() {
+        for pianoKey in pianoKeyOutletCollection {
+            pianoKey.layer.borderWidth = 1.5
+            pianoKey.layer.cornerRadius = 5
         }
-        catch{
-            print(error)
-        }
-        audioPlayer.play()
+        
+        octaveDownOutlet.transform = CGAffineTransform(rotationAngle: 3 * (CGFloat.pi / 2))
+        octaveUpOutlet.transform = CGAffineTransform(rotationAngle: 3 * (CGFloat.pi / 2))
+        octaveLabelOutlet.transform = CGAffineTransform(rotationAngle: 3 * (CGFloat.pi / 2))
     }
     
-    @IBAction func cSharpPressed(_ sender: AnyObject) {
-        let pianoNote = Bundle.main.path(forResource: "41", ofType: "wav", inDirectory: "Piano Sounds")
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: pianoNote!))
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
-            try AVAudioSession.sharedInstance().setActive(true)
-        }
-        catch{
-            print(error)
-        }
-        audioPlayer.play()
+    //Animate keys after being pressed
+    func animateKey(key: Int) {
+        UIView.animate(withDuration: 0.10, animations:{
+            self.pianoKeyOutletCollection[key].frame =
+                self.CGRectMake(self.pianoKeyOutletCollection[key].frame.origin.x + 5,
+                                self.pianoKeyOutletCollection[key].frame.origin.y + 5,
+                                self.pianoKeyOutletCollection[key].frame.size.width,
+                                self.pianoKeyOutletCollection[key].frame.size.height)
+        })
+        
+        UIView.animate(withDuration: 0.10, animations:{
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(200), execute: {
+                self.pianoKeyOutletCollection[key].frame =
+                    self.CGRectMake(self.pianoKeyOutletCollection[key].frame.origin.x - 5,
+                                    self.pianoKeyOutletCollection[key].frame.origin.y - 5,
+                                    self.pianoKeyOutletCollection[key].frame.size.width,
+                                    self.pianoKeyOutletCollection[key].frame.size.height)
+            })
+        })
     }
     
-    @IBAction func dPressed(_ sender: AnyObject) {
-        let pianoNote = Bundle.main.path(forResource: "42", ofType: "wav", inDirectory: "Piano Sounds")
-        // copy this syntax, it tells the compiler what to do when action is received
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: pianoNote!))
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
-            try AVAudioSession.sharedInstance().setActive(true)
-        }
-        catch{
-            print(error)
-        }
-        audioPlayer.play()
+    //Redefine CGRectMake for Swift 3. Used for animating piano keys.
+    func CGRectMake(_ x: CGFloat, _ y: CGFloat, _ width: CGFloat, _ height: CGFloat) -> CGRect {
+        return CGRect(x: x, y: y, width: width, height: height)
     }
     
-    @IBAction func dSharpPressed(_ sender: AnyObject) {
-        let pianoNote = Bundle.main.path(forResource: "43", ofType: "wav", inDirectory: "Piano Sounds")
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: pianoNote!))
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
-            try AVAudioSession.sharedInstance().setActive(true)
+    @IBAction func octaveUpButton(_ sender: AnyObject) {
+        keyboardModel.octaveStepper += 1
+        if keyboardModel.octaveStepper > 1 {
+            keyboardModel.octaveStepper = 1
         }
-        catch{
-            print(error)
-        }
-        audioPlayer.play()
+        octaveLabelOutlet.text = "\(keyboardModel.octaveStepper)"
     }
     
-    @IBAction func ePressed(_ sender: AnyObject) {
-        let pianoNote = Bundle.main.path(forResource: "44", ofType: "wav", inDirectory: "Piano Sounds")
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: pianoNote!))
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
-            try AVAudioSession.sharedInstance().setActive(true)
+    @IBAction func octaveDownButton(_ sender: AnyObject) {
+        keyboardModel.octaveStepper -= 1
+        if keyboardModel.octaveStepper < -1 {
+            keyboardModel.octaveStepper = -1
         }
-        catch{
-            print(error)
-        }
-        audioPlayer.play()
+        octaveLabelOutlet.text = "\(keyboardModel.octaveStepper)"
     }
-    
-    @IBAction func fPressed(_ sender: AnyObject) {
-        let pianoNote = Bundle.main.path(forResource: "45", ofType: "wav", inDirectory: "Piano Sounds")
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: pianoNote!))
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
-            try AVAudioSession.sharedInstance().setActive(true)
-        }
-        catch{
-            print(error)
-        }
-        audioPlayer.play()
-    }
-    
-    @IBAction func fSharpPressed(_ sender: AnyObject) {
-        let pianoNote = Bundle.main.path(forResource: "46", ofType: "wav", inDirectory: "Piano Sounds")
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: pianoNote!))
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
-            try AVAudioSession.sharedInstance().setActive(true)
-        }
-        catch{
-            print(error)
-        }
-        audioPlayer.play()
-    }
-    
-    @IBAction func gPressed(_ sender: AnyObject) {
-        let pianoNote = Bundle.main.path(forResource: "47", ofType: "wav", inDirectory: "Piano Sounds")
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: pianoNote!))
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
-            try AVAudioSession.sharedInstance().setActive(true)
-        }
-        catch{
-            print(error)
-        }
-        audioPlayer.play()
-    }
-    
-    @IBAction func gSharpPressed(_ sender: AnyObject) {
-        let pianoNote = Bundle.main.path(forResource: "48", ofType: "wav", inDirectory: "Piano Sounds")
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: pianoNote!))
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
-            try AVAudioSession.sharedInstance().setActive(true)
-        }
-        catch{
-            print(error)
-        }
-        audioPlayer.play()
-    }
-    
-    @IBAction func aPressed(_ sender: AnyObject) {
-        let pianoNote = Bundle.main.path(forResource: "49", ofType: "wav", inDirectory: "Piano Sounds")
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: pianoNote!))
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
-            try AVAudioSession.sharedInstance().setActive(true)
-        }
-        catch{
-            print(error)
-        }
-        audioPlayer.play()
-    }
+}
 
+//MARK: Extension primarily for easier readability. Includes 13 actions for piano keys. 
+extension KeyboardViewController {
+    
+    //Do
+    @IBAction func cPressed(_ sender: AnyObject) {
+        keyboardModel.cKey()
+        animateKey(key: 12)
+    }
+    
+    //Di
+    @IBAction func cSharpPressed(_ sender: AnyObject) {
+        keyboardModel.cSharpKey()
+        animateKey(key: 11)
+    }
+    
+    //Re
+    @IBAction func dPressed(_ sender: AnyObject) {
+        keyboardModel.dKey()
+        animateKey(key: 10)
+    }
+    
+    //Ri
+    @IBAction func dSharpPressed(_ sender: AnyObject) {
+        keyboardModel.dSharpKey()
+        animateKey(key: 9)
+    }
+    
+    //Mi
+    @IBAction func ePressed(_ sender: AnyObject) {
+        keyboardModel.eKey()
+        animateKey(key: 8)
+    }
+    
+    //Fa
+    @IBAction func fPressed(_ sender: AnyObject) {
+        keyboardModel.fKey()
+        animateKey(key: 7)
+    }
+    
+    //Fi
+    @IBAction func fSharpPressed(_ sender: AnyObject) {
+        keyboardModel.fSharpKey()
+        animateKey(key: 6)
+    }
+    
+    //Sol
+    @IBAction func gPressed(_ sender: AnyObject) {
+        keyboardModel.gKey()
+        animateKey(key: 5)
+    }
+    
+    //Si
+    @IBAction func gSharpPressed(_ sender: AnyObject) {
+        keyboardModel.gSharpKey()
+        animateKey(key: 4)
+    }
+    
+    //La
+    @IBAction func aPressed(_ sender: AnyObject) {
+        keyboardModel.aKey()
+        animateKey(key: 3)
+    }
+    
+    //Li
     @IBAction func aSharpPressed(_ sender: AnyObject) {
-        let pianoNote = Bundle.main.path(forResource: "50", ofType: "wav", inDirectory: "Piano Sounds")
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: pianoNote!))
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
-            try AVAudioSession.sharedInstance().setActive(true)
-        }
-        catch{
-            print(error)
-        }
-        audioPlayer.play()
+        keyboardModel.aSharpKey()
+        animateKey(key: 2)
     }
     
+    //Ti
     @IBAction func bPressed(_ sender: AnyObject) {
-        let pianoNote = Bundle.main.path(forResource: "51", ofType: "wav", inDirectory: "Piano Sounds")
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: pianoNote!))
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
-            try AVAudioSession.sharedInstance().setActive(true)
-        }
-        catch{
-            print(error)
-        }
-        audioPlayer.play()
+        keyboardModel.bKey()
+        animateKey(key: 1)
     }
     
+    //Do
     @IBAction func octaveCPressed(_ sender: AnyObject) {
-        let pianoNote = Bundle.main.path(forResource: "52", ofType: "wav", inDirectory: "Piano Sounds")
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: pianoNote!))
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
-            try AVAudioSession.sharedInstance().setActive(true)
-        }
-        catch{
-            print(error)
-        }
-        audioPlayer.play()
+        keyboardModel.octaveC()
+        animateKey(key: 0)
     }
 }

@@ -7,29 +7,39 @@
 //
 
 import UIKit
+import AVFoundation
 
 class MetronomeViewController: UIViewController {
-
+    
+    var metronomeModel = MetronomeModel()
+    @IBOutlet weak var bpmLabelOutlet: UILabel!
+    @IBOutlet weak var offOnOutlet: UISwitch!
+    @IBOutlet weak var bpmSliderOutlet: UISlider!
+    @IBOutlet weak var metronomeView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        metronomeModel.prepareMetronomeAudio()
+        metronomeModel.tick()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+
+    @IBAction func offOnSwitch(_ sender: AnyObject) {
+        metronomeModel.tock()
     }
-    */
+    
+    @IBAction func bpmSlider(_ sender: AnyObject) {
+        bpmLabelOutlet.text = "\(Int(bpmSliderOutlet.value))"
+        metronomeModel.tick()
+    }
+ 
+    
+
 
 }

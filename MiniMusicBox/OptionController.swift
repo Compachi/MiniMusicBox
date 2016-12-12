@@ -10,31 +10,34 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet var optionButtonsOutletCollection: [UIButton]!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        formatOptionButtons()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func formatOptionButtons() {
+        for buttons in optionButtonsOutletCollection {
+            buttons.layer.borderWidth = 1.0
+            buttons.layer.cornerRadius = 5
+        }
     }
-    
-    
+    //Keyboard
     @IBAction func keyboardButtonPressed(_ sender: AnyObject) {
-        print("KEYBOARD")
+        //print("There's a Bill Evans in all of us.")
         performSegue(withIdentifier: "Keyboard", sender: nil)
     }
     
-    
+    //Tuner
     @IBAction func guitarTunerButtonPressed(_ sender: AnyObject) {
-        print("TUNER")
+        //print("You can tune a piano, but you can't tune a fish. *ba dum tsh*")
         performSegue(withIdentifier: "Tuner", sender: nil)
     }
     
-    
+    //Metronome
     @IBAction func metronomeButtonPressed(_ sender: AnyObject) {
-        print("METRONOME")
+        //print("NOT MY ****ING TEMPO! (I highly recommend watching Whiplash if you haven't already)")
         performSegue(withIdentifier: "Metronome", sender: nil)
     }
     

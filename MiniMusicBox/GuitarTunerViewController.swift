@@ -7,29 +7,85 @@
 //
 
 import UIKit
+import AVFoundation
 
 class GuitarTunerViewController: UIViewController {
-
+    
+    let guitarModel = GuitarModel()
+    @IBOutlet weak var resetButtonOutlet: UIButton!
+    @IBOutlet var guitarStringOutletCollection: [UISwitch]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        guitarModel.prepareGuitarAudio()
+        guitarModel.setSoundLoops()
+        resetButtonOutlet.layer.borderWidth = 1.0
+        resetButtonOutlet.layer.cornerRadius = 0.5 * resetButtonOutlet.bounds.size.width
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func eStringSwitched(_ sender: AnyObject) {
+        if guitarStringOutletCollection[0].isOn {
+            guitarModel.playEString()
+        } else {
+            guitarModel.stopEString()
+        }
     }
-    */
+    
+    @IBAction func aStringSwitched(_ sender: AnyObject) {
+        if guitarStringOutletCollection[1].isOn {
+            guitarModel.playAString()
+        } else {
+            guitarModel.stopAString()
+        }
 
+    }
+    
+    @IBAction func dStringSwitched(_ sender: AnyObject) {
+        if guitarStringOutletCollection[2].isOn {
+            guitarModel.playDString()
+        } else {
+            guitarModel.stopDString()
+        }
+    }
+    
+    @IBAction func gStringSwitched(_ sender: AnyObject) {
+        if guitarStringOutletCollection[3].isOn {
+            guitarModel.playGString()
+        } else {
+            guitarModel.stopGString()
+        }
+    }
+    
+    @IBAction func bStringSwitched(_ sender: AnyObject) {
+        if guitarStringOutletCollection[4].isOn {
+            guitarModel.playBString()
+        } else {
+            guitarModel.stopBString()
+        }
+    }
+    
+    @IBAction func octaveEStringSwitched(_ sender: AnyObject) {
+        if guitarStringOutletCollection[5].isOn {
+            guitarModel.playOctaveEString()
+        } else {
+            guitarModel.stopOctaveEString()
+        }
+    }
+    
+    @IBAction func resetButtonPressed(_ sender: AnyObject) {
+        for switches in guitarStringOutletCollection {
+            switches.isOn = false
+        }
+        guitarModel.stopEString()
+        guitarModel.stopAString()
+        guitarModel.stopDString()
+        guitarModel.stopGString()
+        guitarModel.stopBString()
+        guitarModel.stopOctaveEString()
+    }
+    
 }
