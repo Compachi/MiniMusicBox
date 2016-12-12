@@ -38,18 +38,6 @@
                                     <action selector="guitarTunerButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Lgk-NN-yqe"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9mv-GT-yaO">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="95" id="hhG-d6-GhM"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                <state key="normal" title="Metronome">
-                                    <color key="titleColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="metronomeButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rRM-qe-Mx5"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BrX-iG-l1w">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="95" id="KXR-tW-ZFW"/>
@@ -62,27 +50,39 @@
                                     <action selector="keyboardButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="C6w-hH-kER"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9mv-GT-yaO">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="95" id="hhG-d6-GhM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <state key="normal" title="Metronome">
+                                    <color key="titleColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="metronomeButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rRM-qe-Mx5"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.59999999999999998" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="BrX-iG-l1w" firstAttribute="top" secondItem="MCY-AR-px0" secondAttribute="bottom" constant="8" id="0w1-4U-z0v"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="9mv-GT-yaO" secondAttribute="trailing" constant="75" id="44d-M0-wtg"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="9mv-GT-yaO" secondAttribute="trailing" constant="87" id="44d-M0-wtg"/>
                             <constraint firstItem="imP-l2-JA3" firstAttribute="top" secondItem="BrX-iG-l1w" secondAttribute="bottom" constant="25" id="4Kr-4M-mZh"/>
                             <constraint firstItem="MCY-AR-px0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="5lo-SA-DTv"/>
                             <constraint firstItem="imP-l2-JA3" firstAttribute="leading" secondItem="9mv-GT-yaO" secondAttribute="leading" id="5y3-fb-lPh"/>
-                            <constraint firstItem="9mv-GT-yaO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="99" id="7ot-4l-rnR"/>
+                            <constraint firstItem="9mv-GT-yaO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="87" id="7ot-4l-rnR"/>
                             <constraint firstItem="imP-l2-JA3" firstAttribute="trailing" secondItem="9mv-GT-yaO" secondAttribute="trailing" id="99H-AX-000"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="BrX-iG-l1w" secondAttribute="trailing" constant="75" id="Akg-rt-KQX"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BrX-iG-l1w" secondAttribute="trailing" constant="87" id="Akg-rt-KQX"/>
                             <constraint firstItem="MCY-AR-px0" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="HXX-7b-gLp"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="imP-l2-JA3" secondAttribute="trailing" constant="75" id="K6B-V9-SNT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="imP-l2-JA3" secondAttribute="trailing" constant="87" id="K6B-V9-SNT"/>
                             <constraint firstItem="9mv-GT-yaO" firstAttribute="height" secondItem="imP-l2-JA3" secondAttribute="height" id="S04-Pr-joo"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="BrX-iG-l1w" secondAttribute="trailing" constant="75" id="Xaa-yN-sza"/>
-                            <constraint firstItem="BrX-iG-l1w" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="99" id="Yjy-ht-hxj"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BrX-iG-l1w" secondAttribute="trailing" constant="87" id="Xaa-yN-sza"/>
+                            <constraint firstItem="BrX-iG-l1w" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="87" id="Yjy-ht-hxj"/>
                             <constraint firstItem="BrX-iG-l1w" firstAttribute="leading" secondItem="imP-l2-JA3" secondAttribute="leading" id="cEX-05-Nsz"/>
                             <constraint firstItem="MCY-AR-px0" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="elh-Rs-hCG"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="9mv-GT-yaO" secondAttribute="bottom" constant="125" id="iwn-PN-860"/>
                             <constraint firstItem="9mv-GT-yaO" firstAttribute="top" secondItem="imP-l2-JA3" secondAttribute="bottom" constant="25" id="mRW-KP-3If"/>
-                            <constraint firstItem="imP-l2-JA3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="99" id="piF-Dn-pAU"/>
+                            <constraint firstItem="imP-l2-JA3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="87" id="piF-Dn-pAU"/>
                             <constraint firstItem="BrX-iG-l1w" firstAttribute="height" secondItem="imP-l2-JA3" secondAttribute="height" id="qRs-ZH-DHx"/>
                             <constraint firstItem="BrX-iG-l1w" firstAttribute="trailing" secondItem="imP-l2-JA3" secondAttribute="trailing" id="xtI-pb-wbl"/>
                         </constraints>

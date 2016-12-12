@@ -11,7 +11,7 @@ import AVFoundation
 
 class GuitarTunerViewController: UIViewController {
     
-    let guitarModel = GuitarModel()
+    fileprivate let guitarModel = GuitarModel()
     @IBOutlet weak var resetButtonOutlet: UIButton!
     @IBOutlet var guitarStringOutletCollection: [UISwitch]!
     

@@ -12,7 +12,8 @@ import AVFoundation
 
 class MetronomeModel {
     
-    fileprivate var metronomeTimer: Timer!
+    var tempo = 120
+    var metronomeTimer: Timer!
     fileprivate var tickSound = AVAudioPlayer()
     fileprivate var tockSound = AVAudioPlayer()
     
@@ -39,23 +40,17 @@ class MetronomeModel {
         }
     }
     
-    func tick() {
+    func startMetronome() {
+        metronomeTimer = Timer.scheduledTimer(timeInterval: TimeInterval(TimeInterval(60.0) / TimeInterval(tempo)), target: self, selector: #selector(MetronomeModel.tick), userInfo: nil, repeats: true)
+        metronomeTimer.fire()
+    }
+    
+    @objc func tick() {
         tickSound.play()
     }
     
-    func tock() {
-        tockSound.play()
+    func stopMetronome() {
+        metronomeTimer.invalidate()
+        tickSound.stop()
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }

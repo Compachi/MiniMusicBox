@@ -12,7 +12,7 @@
 import UIKit
 
 class KeyboardViewController: UIViewController {
-    let keyboardModel = KeyboardModel();
+    fileprivate let keyboardModel = KeyboardModel();
     @IBOutlet var pianoKeyOutletCollection: [UIButton]!
     @IBOutlet weak var octaveLabelOutlet: UILabel!
     @IBOutlet weak var octaveUpOutlet: UIButton!
