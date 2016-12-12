@@ -2,7 +2,12 @@ The Mini Music Box contains three tools for musicians can use anywhere at anytim
 
 The 13-key piano has three separate octaves. Begins at middle C and can go one octave above and below.
 
-The guitar tuner plays repeated drone sounds for EADGBE. Switches are arranged in the shape of the headstock
-for beginner guitarists.
+The guitar tuner plays repeated drone sounds for EADGBE. Switches are arranged in the shape of the headstock for beginner guitarists.
 
 The metronome is... a metronome.
+
+Future plans for after 1.0
+--------------------------
+- Subdividing tempos of the metronome (eight notes, triplet eights, sixteenth notes, quintuplets...)
+- Different tunings for guitar (multiple standard / drop tunings)
+- More octaves for keyboard
