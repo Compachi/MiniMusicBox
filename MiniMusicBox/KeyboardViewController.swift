@@ -10,6 +10,7 @@
 //  that "constraints are a bitch".
 
 import UIKit
+import CoreData
 
 class KeyboardViewController: UIViewController {
     fileprivate let keyboardModel = KeyboardModel();
@@ -82,6 +83,8 @@ class KeyboardViewController: UIViewController {
         octaveLabelOutlet.text = "\(keyboardModel.octaveStepper)"
     }
 }
+
+
 
 //MARK: Extension primarily for easier readability. Includes 13 actions for piano keys. 
 extension KeyboardViewController {
