@@ -20,7 +20,7 @@ class MetronomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        metronomeImageView.image = UIImage(named: "16th.jpg")
+        metronomeImageView.image = UIImage(named: "quarter.png")
         formatSubdivisionButtons()
         metronomeModel.prepareMetronomeAudio()
     }
