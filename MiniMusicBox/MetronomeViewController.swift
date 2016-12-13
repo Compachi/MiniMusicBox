@@ -15,11 +15,12 @@ class MetronomeViewController: UIViewController {
     @IBOutlet weak var bpmLabelOutlet: UILabel!
     @IBOutlet weak var offOnOutlet: UISwitch!
     @IBOutlet weak var bpmSliderOutlet: UISlider!
-    @IBOutlet weak var metronomeView: UIView!
+    @IBOutlet weak var metronomeImageView: UIImageView!
     @IBOutlet var tempoSubdivisionOutletCollection: [UIButton]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        metronomeImageView.image = UIImage(named: "16th.jpg")
         formatSubdivisionButtons()
         metronomeModel.prepareMetronomeAudio()
     }

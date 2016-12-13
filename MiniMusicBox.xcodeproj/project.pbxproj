@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F11C9E751E00A77A004795F0 /* Music Pictures in Resources */ = {isa = PBXBuildFile; fileRef = F11C9E741E00A77A004795F0 /* Music Pictures */; };
 		F1AE34BD1DF8963E00722370 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AE34BC1DF8963E00722370 /* AppDelegate.swift */; };
 		F1AE34BF1DF8963E00722370 /* OptionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AE34BE1DF8963E00722370 /* OptionController.swift */; };
 		F1AE34C21DF8963E00722370 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1AE34C01DF8963E00722370 /* Main.storyboard */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F11C9E741E00A77A004795F0 /* Music Pictures */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Music Pictures"; sourceTree = "<group>"; };
 		F1AE34B91DF8963E00722370 /* MiniMusicBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniMusicBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1AE34BC1DF8963E00722370 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F1AE34BE1DF8963E00722370 /* OptionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionController.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				F1AE34C61DF8963E00722370 /* Assets.xcassets */,
 				F1AE34C81DF8963E00722370 /* LaunchScreen.storyboard */,
 				F1AE34CB1DF8963E00722370 /* Info.plist */,
+				F11C9E741E00A77A004795F0 /* Music Pictures */,
 				F1AE34E41DFE751B00722370 /* Metronome Sounds */,
 				F1AE34E21DFDFE6E00722370 /* Guitar Sounds */,
 				F1AE34DD1DF89B2600722370 /* Piano Sounds */,
@@ -165,6 +168,7 @@
 				F1AE34E31DFDFE6E00722370 /* Guitar Sounds in Resources */,
 				F1AE34C71DF8963E00722370 /* Assets.xcassets in Resources */,
 				F1AE34E51DFE751B00722370 /* Metronome Sounds in Resources */,
+				F11C9E751E00A77A004795F0 /* Music Pictures in Resources */,
 				F1AE34C21DF8963E00722370 /* Main.storyboard in Resources */,
 				F1AE34DE1DF89B2600722370 /* Piano Sounds in Resources */,
 			);
@@ -351,6 +355,7 @@
 				F1AE34D01DF8963E00722370 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

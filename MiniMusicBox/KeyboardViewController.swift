@@ -13,6 +13,7 @@ import UIKit
 import CoreData
 
 class KeyboardViewController: UIViewController {
+    fileprivate var octaveLabel: NSManagedObject!
     fileprivate let keyboardModel = KeyboardModel();
     @IBOutlet var pianoKeyOutletCollection: [UIButton]!
     @IBOutlet weak var octaveLabelOutlet: UILabel!
