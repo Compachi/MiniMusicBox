@@ -99,7 +99,7 @@ class GuitarModel {
         octaveEStringAudio.numberOfLoops = 20
     }
     
-    //When user switches one of the strings on, note will begin playing over and over 20 times. Once user switches note off, it stops the note and resets file ro beginning.
+    //When user switches one of the strings on, sound file will begin playing over and over 20 times. Once user switches note off, it stops the file and resets file to beginning and resets loops.
     func playEString() {
         eStringAudio.play()
     }
