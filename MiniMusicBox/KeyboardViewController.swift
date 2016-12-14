@@ -14,7 +14,7 @@ import CoreData
 
 class KeyboardViewController: UIViewController {
     fileprivate let keyboardModel = KeyboardModel();
-    var octaveFromCoreData: String = ""
+    fileprivate var octaveFromCoreData: [OctaveLabelEntity] = []
     @IBOutlet var pianoKeyOutletCollection: [UIButton]!
     @IBOutlet weak var octaveLabelOutlet: UILabel!
     @IBOutlet weak var octaveUpOutlet: UIButton!
@@ -84,16 +84,39 @@ class KeyboardViewController: UIViewController {
     }
     
     func saveOctaveLabelToCoreData(octaveValue: String) {
-
+        //Get context and save to core data
+        let ctx = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let labelEntity = OctaveLabelEntity(context: ctx)
+        labelEntity.octaveLabel = octaveValue
+        //labelEntity.octaveLabel = octaveLabelOutlet.text
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        let labelString = NSString(format: "%@", labelEntity.octaveLabel!)
+        keyboardModel.octaveStepper = Int(labelString.intValue)
+        //print(labelString)
     }
     
     func retrieveCoreDataForOctaveLabelValue() {
-
-        
+        //Get context and retrieve from core data
+        let ctx = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        do {
+            print("TRYING TO RETRIEVE DATA")
+            octaveFromCoreData = try ctx.fetch(OctaveLabelEntity.fetchRequest())
+            
+            if octaveFromCoreData.count > 0 {
+                //Only need last element
+                let labelString = NSString(format: "%@", octaveFromCoreData[octaveFromCoreData.count - 1].octaveLabel!)
+                octaveLabelOutlet.text = labelString as String
+                keyboardModel.octaveStepper = Int(labelString.intValue)
+            } else { //If we have yet to save any data, we will use the default octave.
+                //print("Defaults used.")
+                octaveLabelOutlet.text = "0"
+                keyboardModel.octaveStepper = 0
+            }
+        } catch {
+            print("ERROR FETCHING DATA!")
+        }
     }
 }
-
-
 
 //MARK: Extension primarily for easier readability. Includes 13 actions for piano keys. 
 extension KeyboardViewController {

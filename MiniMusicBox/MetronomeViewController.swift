@@ -10,6 +10,7 @@ import UIKit
 
 class MetronomeViewController: UIViewController {
     
+    fileprivate var tempoFromCoreData: [BpmLabelEntity] = []
     fileprivate let metronomeModel = MetronomeModel()
     fileprivate var previousMetronomeImageViewImage = ""
     @IBOutlet weak var bpmLabelOutlet: UILabel!
@@ -23,6 +24,7 @@ class MetronomeViewController: UIViewController {
         setDefaultMetronomeImageViewImage()
         formatSubdivisionButtons()
         metronomeModel.prepareMetronomeAudio()
+        retrieveCoreDataForBpmLabelValue()
     }
     
     //If user tries to slide back to option controller, invalidates timer(s) and turns off metronome switch.
@@ -70,6 +72,8 @@ class MetronomeViewController: UIViewController {
             }
             metronomeModel.startMetronome()
         }
+        saveBpmLabelToCoreData(bpmValue: bpmLabelOutlet.text!)
+        
     }
     
     func resetButtonsAfterSelection() {
@@ -84,8 +88,44 @@ class MetronomeViewController: UIViewController {
                     self.metronomeImageView.image = UIImage(named: notePicture)
                 }, completion: nil)
             }
+    }
+    
+    func saveBpmLabelToCoreData(bpmValue: String) {
+        //Get context and save to core data
+        let ctx = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let labelEntity = BpmLabelEntity(context: ctx)
+        labelEntity.bpmLabel = bpmLabelOutlet.text
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        let labelString = NSString(format: "%@", labelEntity.bpmLabel!)
+        metronomeModel.tempo = Int(labelString.intValue)
+        print(labelString)
+    }
+    
+    func retrieveCoreDataForBpmLabelValue() {
+        //Get context and retrieve from core data
+        let ctx = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        do {
+            print("TRYING TO RETRIEVE DATA")
+            tempoFromCoreData = try ctx.fetch(BpmLabelEntity.fetchRequest())
+            if tempoFromCoreData.count > 0 {
+                //Only need last element
+                let labelString = NSString(format: "%@", tempoFromCoreData[tempoFromCoreData.count - 1].bpmLabel!)
+                //print(labelString)
+                bpmLabelOutlet.text = labelString as String
+                metronomeModel.tempo = Int(labelString.intValue)
+                bpmSliderOutlet.setValue(Float(metronomeModel.tempo), animated: false)
+            } else { //If we have yet to save any data, we will use the default bpm and set the slider accordingly
+                print("Defaults Used.")
+                bpmLabelOutlet.text = "120"
+                metronomeModel.tempo = 120
+                bpmSliderOutlet.setValue(Float(metronomeModel.tempo), animated: false)
+            }
+        } catch {
+            print("ERROR FETCHING DATA!")
         }
+    }
 }
+
 //MARK: I created another extension similar to the keyboard controller. This one is for the subdivision buttons.
 extension MetronomeViewController {
         

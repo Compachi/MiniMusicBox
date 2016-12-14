@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11224.2" systemVersion="15G1004" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="BpmLabelEntity" representedClassName="BpmLabelEntity" syncable="YES" codeGenerationType="class">
-        <attribute name="bpmLabel" attributeType="String" defaultValueString="120" regularExpressionString="120" syncable="YES"/>
+        <attribute name="bpmLabel" optional="YES" attributeType="String" defaultValueString="120" syncable="YES"/>
     </entity>
-    <entity name="OctaveLabelEntity" representedClassName="Entity" syncable="YES" codeGenerationType="class">
-        <attribute name="octaveLabel" attributeType="String" defaultValueString="0" regularExpressionString="0" syncable="YES"/>
+    <entity name="OctaveLabelEntity" representedClassName="OctaveLabelEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="octaveLabel" optional="YES" attributeType="String" defaultValueString="0" syncable="YES"/>
     </entity>
     <elements>
         <element name="OctaveLabelEntity" positionX="-63" positionY="-18" width="128" height="60"/>
