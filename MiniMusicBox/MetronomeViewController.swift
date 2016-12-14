@@ -61,7 +61,6 @@ class MetronomeViewController: UIViewController {
     @IBAction func bpmSlider(_ sender: AnyObject) {
         bpmLabelOutlet.text = "\(Int(bpmSliderOutlet.value))"
         metronomeModel.tempo = Int(bpmSliderOutlet.value)
-        
         if offOnOutlet.isOn {
             metronomeModel.metronomeTimer.invalidate()
             if metronomeModel.subdividedTimer != nil {
@@ -78,72 +77,68 @@ class MetronomeViewController: UIViewController {
     }
     
     func animateMetronomeView(notePicture: String) {
-            UIView.transition(with: self.metronomeImageView, duration: 0.25, options: .transitionCurlUp, animations: {
-                
+        UIView.transition(with: self.metronomeImageView, duration: 0.25, options: .transitionCurlUp, animations: {
                 self.metronomeImageView.image = UIImage(named: notePicture)
-                
-                }, completion: nil)
-        
-        
+            }, completion: nil)
     }
 }
-    //MARK: I created another extension similar to the keyboard controller. This one is for the subdivision buttons.
-    extension MetronomeViewController {
+//MARK: I created another extension similar to the keyboard controller. This one is for the subdivision buttons.
+extension MetronomeViewController {
         
-        @IBAction func quarterNotePressed(_ sender: AnyObject) {
-            animateMetronomeView(notePicture: "quarter.png")
-            resetButtonsAfterSelection()
-            tempoSubdivisionOutletCollection[0].backgroundColor = UIColor.gray
-            metronomeModel.subdivision = 1.0
-            if offOnOutlet.isOn {
-                metronomeModel.metronomeTimer.invalidate()
-                if metronomeModel.subdividedTimer != nil  {
-                    metronomeModel.subdividedTimer.invalidate()
-                }
-                metronomeModel.startMetronome()
+    @IBAction func quarterNotePressed(_ sender: AnyObject) {
+        animateMetronomeView(notePicture: "quarter.png")
+        resetButtonsAfterSelection()
+        tempoSubdivisionOutletCollection[0].backgroundColor = UIColor.gray
+        metronomeModel.subdivision = 1.0
+        if offOnOutlet.isOn {
+            metronomeModel.metronomeTimer.invalidate()
+            if metronomeModel.subdividedTimer != nil  {
+                metronomeModel.subdividedTimer.invalidate()
             }
+            metronomeModel.startMetronome()
         }
+    }
         
-        @IBAction func eightNotePressed(_ sender: AnyObject) {
-            animateMetronomeView(notePicture: "8th.png")
-            resetButtonsAfterSelection()
-            tempoSubdivisionOutletCollection[1].backgroundColor = UIColor.gray
-            metronomeModel.subdivision = 2.0
-            if offOnOutlet.isOn {
-                metronomeModel.metronomeTimer.invalidate()
-                if metronomeModel.subdividedTimer != nil {
-                    metronomeModel.subdividedTimer.invalidate()
-                }
-                metronomeModel.startMetronome()
+    @IBAction func eightNotePressed(_ sender: AnyObject) {
+        animateMetronomeView(notePicture: "8th.png")
+        resetButtonsAfterSelection()
+        tempoSubdivisionOutletCollection[1].backgroundColor = UIColor.gray
+        metronomeModel.subdivision = 2.0
+        if offOnOutlet.isOn {
+            metronomeModel.metronomeTimer.invalidate()
+            if metronomeModel.subdividedTimer != nil {
+                metronomeModel.subdividedTimer.invalidate()
             }
+            metronomeModel.startMetronome()
         }
+    }
         
-        @IBAction func eigthNoteTripletPressed(_ sender: AnyObject) {
-            animateMetronomeView(notePicture: "triplet.png")
-            resetButtonsAfterSelection()
-            tempoSubdivisionOutletCollection[2].backgroundColor = UIColor.gray
-            metronomeModel.subdivision = 3.0
-            if offOnOutlet.isOn {
-                metronomeModel.metronomeTimer.invalidate()
-                if metronomeModel.subdividedTimer != nil {
-                    metronomeModel.subdividedTimer.invalidate()
-                }
-                metronomeModel.startMetronome()
+    @IBAction func eigthNoteTripletPressed(_ sender: AnyObject) {
+        animateMetronomeView(notePicture: "triplet.png")
+        resetButtonsAfterSelection()
+        tempoSubdivisionOutletCollection[2].backgroundColor = UIColor.gray
+        metronomeModel.subdivision = 3.0
+        if offOnOutlet.isOn {
+            metronomeModel.metronomeTimer.invalidate()
+            if metronomeModel.subdividedTimer != nil {
+                metronomeModel.subdividedTimer.invalidate()
             }
+            metronomeModel.startMetronome()
         }
+    }
         
-        @IBAction func sixteenthNotePressed(_ sender: AnyObject) {
-            animateMetronomeView(notePicture: "16th.png")
-            resetButtonsAfterSelection()
-            tempoSubdivisionOutletCollection[3].backgroundColor = UIColor.gray
-            metronomeModel.subdivision = 4.0
-            if offOnOutlet.isOn {
-                metronomeModel.metronomeTimer.invalidate()
-                if metronomeModel.subdividedTimer != nil {
-                    metronomeModel.subdividedTimer.invalidate()
-                }
-                metronomeModel.startMetronome()
+    @IBAction func sixteenthNotePressed(_ sender: AnyObject) {
+        animateMetronomeView(notePicture: "16th.png")
+        resetButtonsAfterSelection()
+        tempoSubdivisionOutletCollection[3].backgroundColor = UIColor.gray
+        metronomeModel.subdivision = 4.0
+        if offOnOutlet.isOn {
+            metronomeModel.metronomeTimer.invalidate()
+            if metronomeModel.subdividedTimer != nil {
+                metronomeModel.subdividedTimer.invalidate()
             }
+            metronomeModel.startMetronome()
         }
+    }
 }
 
