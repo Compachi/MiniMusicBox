@@ -34,7 +34,7 @@ class MetronomeModel {
         tickSound.prepareToPlay()
     }
     
-    //If user selects to subdivide the time into eighth notes, triplets, etc... we'll initialize the second timer
+    //If user selects to subdivide the time into eighth notes, triplets, or sixteenths, we'll initialize the second timer.
     func startMetronome() {
         metronomeTimer = Timer.scheduledTimer(timeInterval: TimeInterval(TimeInterval(60.0) / TimeInterval(tempo)), target: self, selector: #selector(MetronomeModel.tick), userInfo: nil, repeats: true)
         if subdivision > 1 {
@@ -44,11 +44,11 @@ class MetronomeModel {
         metronomeTimer.fire()
     }
     
-    @objc func tick() {
+    @objc fileprivate func tick() {
         tickSound.play()
     }
-    //I originally had planned to use two audio files, but when the BPM gets too high, the second sound file can't keep up with the subdivided tempo. I opted to use one of the system sounds instead. And it seems to work just fine.
-    @objc func tock() {
+    //MARK: I originally had planned to use two audio files, but when the BPM gets too high, the second sound file can't keep up with the subdivided tempo. I opted to use one of the system sounds instead. And it seems to work just fine. The odds of somebody really needing sixteenth notes at 240 beats per minute is most likely zero, but still...
+    @objc fileprivate func tock() {
         AudioServicesPlaySystemSound(1103)
     }
     
@@ -58,9 +58,5 @@ class MetronomeModel {
             subdividedTimer.invalidate()
         }
         tickSound.stop()
-    }
-    
-    func animateMetronomeView() {
-        
     }
 }

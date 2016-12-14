@@ -19,14 +19,8 @@ class GuitarTunerViewController: UIViewController {
         super.viewDidLoad()
         guitarModel.prepareGuitarAudio()
         guitarModel.setSoundLoops()
-        resetButtonOutlet.layer.borderWidth = 1.0
-        resetButtonOutlet.layer.cornerRadius = 0.5 * resetButtonOutlet.bounds.size.width
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
     @IBAction func eStringSwitched(_ sender: AnyObject) {
         if guitarStringOutletCollection[0].isOn {
             guitarModel.playEString()

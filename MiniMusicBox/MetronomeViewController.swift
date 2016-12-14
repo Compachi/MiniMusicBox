@@ -7,11 +7,11 @@
 //
 
 import UIKit
-import AVFoundation
 
 class MetronomeViewController: UIViewController {
     
     fileprivate let metronomeModel = MetronomeModel()
+    fileprivate var previousMetronomeImageViewImage = ""
     @IBOutlet weak var bpmLabelOutlet: UILabel!
     @IBOutlet weak var offOnOutlet: UISwitch!
     @IBOutlet weak var bpmSliderOutlet: UISlider!
@@ -20,7 +20,7 @@ class MetronomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        metronomeImageView.image = UIImage(named: "quarter.png")
+        setDefaultMetronomeImageViewImage()
         formatSubdivisionButtons()
         metronomeModel.prepareMetronomeAudio()
     }
@@ -46,8 +46,10 @@ class MetronomeViewController: UIViewController {
         tempoSubdivisionOutletCollection[0].backgroundColor = UIColor.gray
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    //I'm using another variable to keep track of the previous image. This way the image view won't animate again if the same tempo subdivision option is chosen again.
+    func setDefaultMetronomeImageViewImage() {
+        metronomeImageView.image = UIImage(named: "quarter.png")
+        previousMetronomeImageViewImage = "quarter.png"
     }
     
     @IBAction func offOnSwitch(_ sender: AnyObject) {
@@ -77,16 +79,19 @@ class MetronomeViewController: UIViewController {
     }
     
     func animateMetronomeView(notePicture: String) {
-        UIView.transition(with: self.metronomeImageView, duration: 0.25, options: .transitionCurlUp, animations: {
-                self.metronomeImageView.image = UIImage(named: notePicture)
-            }, completion: nil)
-    }
+        if notePicture != previousMetronomeImageViewImage {
+            UIView.transition(with: self.metronomeImageView, duration: 0.35, options: .transitionCurlUp, animations: {
+                    self.metronomeImageView.image = UIImage(named: notePicture)
+                }, completion: nil)
+            }
+        }
 }
 //MARK: I created another extension similar to the keyboard controller. This one is for the subdivision buttons.
 extension MetronomeViewController {
         
     @IBAction func quarterNotePressed(_ sender: AnyObject) {
         animateMetronomeView(notePicture: "quarter.png")
+        previousMetronomeImageViewImage = "quarter.png"
         resetButtonsAfterSelection()
         tempoSubdivisionOutletCollection[0].backgroundColor = UIColor.gray
         metronomeModel.subdivision = 1.0
@@ -101,6 +106,7 @@ extension MetronomeViewController {
         
     @IBAction func eightNotePressed(_ sender: AnyObject) {
         animateMetronomeView(notePicture: "8th.png")
+        previousMetronomeImageViewImage = "8th.png"
         resetButtonsAfterSelection()
         tempoSubdivisionOutletCollection[1].backgroundColor = UIColor.gray
         metronomeModel.subdivision = 2.0
@@ -115,6 +121,7 @@ extension MetronomeViewController {
         
     @IBAction func eigthNoteTripletPressed(_ sender: AnyObject) {
         animateMetronomeView(notePicture: "triplet.png")
+        previousMetronomeImageViewImage = "triplet.png"
         resetButtonsAfterSelection()
         tempoSubdivisionOutletCollection[2].backgroundColor = UIColor.gray
         metronomeModel.subdivision = 3.0
@@ -129,6 +136,7 @@ extension MetronomeViewController {
         
     @IBAction func sixteenthNotePressed(_ sender: AnyObject) {
         animateMetronomeView(notePicture: "16th.png")
+        previousMetronomeImageViewImage = "16th.png"
         resetButtonsAfterSelection()
         tempoSubdivisionOutletCollection[3].backgroundColor = UIColor.gray
         metronomeModel.subdivision = 4.0

@@ -13,8 +13,8 @@ import UIKit
 import CoreData
 
 class KeyboardViewController: UIViewController {
-    fileprivate var octaveLabel: NSManagedObject!
     fileprivate let keyboardModel = KeyboardModel();
+    var octaveFromCoreData: String = ""
     @IBOutlet var pianoKeyOutletCollection: [UIButton]!
     @IBOutlet weak var octaveLabelOutlet: UILabel!
     @IBOutlet weak var octaveUpOutlet: UIButton!
@@ -23,13 +23,9 @@ class KeyboardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         formatKeyboardButtonsAndLabels()
+        retrieveCoreDataForOctaveLabelValue()
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+        
     //Borders and rounded corners for piano keys. Rotates octave buttons and octave label as well
     func formatKeyboardButtonsAndLabels() {
         for pianoKey in pianoKeyOutletCollection {
@@ -68,12 +64,14 @@ class KeyboardViewController: UIViewController {
         return CGRect(x: x, y: y, width: width, height: height)
     }
     
+    //Functions will change the octave of the piano and save octaves in core data.
     @IBAction func octaveUpButton(_ sender: AnyObject) {
         keyboardModel.octaveStepper += 1
         if keyboardModel.octaveStepper > 1 {
             keyboardModel.octaveStepper = 1
         }
         octaveLabelOutlet.text = "\(keyboardModel.octaveStepper)"
+        saveOctaveLabelToCoreData(octaveValue: octaveLabelOutlet.text!)
     }
     
     @IBAction func octaveDownButton(_ sender: AnyObject) {
@@ -82,6 +80,16 @@ class KeyboardViewController: UIViewController {
             keyboardModel.octaveStepper = -1
         }
         octaveLabelOutlet.text = "\(keyboardModel.octaveStepper)"
+        saveOctaveLabelToCoreData(octaveValue: octaveLabelOutlet.text!)
+    }
+    
+    func saveOctaveLabelToCoreData(octaveValue: String) {
+
+    }
+    
+    func retrieveCoreDataForOctaveLabelValue() {
+
+        
     }
 }
 
