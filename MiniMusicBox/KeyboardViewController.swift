@@ -88,11 +88,9 @@ class KeyboardViewController: UIViewController {
         let ctx = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let labelEntity = OctaveLabelEntity(context: ctx)
         labelEntity.octaveLabel = octaveValue
-        //labelEntity.octaveLabel = octaveLabelOutlet.text
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
         let labelString = NSString(format: "%@", labelEntity.octaveLabel!)
         keyboardModel.octaveStepper = Int(labelString.intValue)
-        //print(labelString)
     }
     
     func retrieveCoreDataForOctaveLabelValue() {
@@ -108,7 +106,6 @@ class KeyboardViewController: UIViewController {
                 octaveLabelOutlet.text = labelString as String
                 keyboardModel.octaveStepper = Int(labelString.intValue)
             } else { //If we have yet to save any data, we will use the default octave.
-                //print("Defaults used.")
                 octaveLabelOutlet.text = "0"
                 keyboardModel.octaveStepper = 0
             }

@@ -94,11 +94,10 @@ class MetronomeViewController: UIViewController {
         //Get context and save to core data
         let ctx = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let labelEntity = BpmLabelEntity(context: ctx)
-        labelEntity.bpmLabel = bpmLabelOutlet.text
+        labelEntity.bpmLabel = bpmValue
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
         let labelString = NSString(format: "%@", labelEntity.bpmLabel!)
         metronomeModel.tempo = Int(labelString.intValue)
-        print(labelString)
     }
     
     func retrieveCoreDataForBpmLabelValue() {
@@ -110,12 +109,10 @@ class MetronomeViewController: UIViewController {
             if tempoFromCoreData.count > 0 {
                 //Only need last element
                 let labelString = NSString(format: "%@", tempoFromCoreData[tempoFromCoreData.count - 1].bpmLabel!)
-                //print(labelString)
                 bpmLabelOutlet.text = labelString as String
                 metronomeModel.tempo = Int(labelString.intValue)
                 bpmSliderOutlet.setValue(Float(metronomeModel.tempo), animated: false)
-            } else { //If we have yet to save any data, we will use the default bpm and set the slider accordingly
-                print("Defaults Used.")
+            } else { //If we have yet to save any data, we will use the default bpm and set the slider accordingly.
                 bpmLabelOutlet.text = "120"
                 metronomeModel.tempo = 120
                 bpmSliderOutlet.setValue(Float(metronomeModel.tempo), animated: false)
