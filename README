@@ -6,6 +6,8 @@ The guitar tuner plays repeated drone sounds for EADGBE. Switches are arranged i
 
 The metronome is capable of subdividing the tempos (perfect for cut time, 6/8, 9/8, 12/8, etc.)
 
+Core Data saves settings of the piano octave and the BPM set by the user in the metronome.
+
 Future plans
 -------------
 - Different tunings for guitar (multiple standard / drop tunings)
