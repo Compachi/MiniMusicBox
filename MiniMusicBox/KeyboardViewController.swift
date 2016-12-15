@@ -5,9 +5,7 @@
 //  Created by Kyle Lessnau on 12/7/16.
 //  Copyright © 2016 Kyle Lessnau. All rights reserved.
 //
-//  The day is the 12th of December in the year 2016. Current Time: 3:04 AM.
-//  Today is the day I have come to understand why others before me have said
-//  that "constraints are a bitch".
+
 
 import UIKit
 import CoreData
